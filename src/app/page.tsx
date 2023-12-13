@@ -12,17 +12,17 @@ export default function Home() {
         />
       </div>
 
-      <section className="backdrop-blur-sm bg-white/30 w-8/12 h-96 rounded p-8">
+      <section className="backdrop-blur-sm bg-white/30 w-11/12 sm:w-8/12 h-auto sm:h-96 rounded-3xl py-12 px-5 sm:p-8">
         <Image 
           src="/logo.png"
           width="60"
           height="20"
           alt="Logo"
-          className="rounded-full absolute top-5 left-5"
+          className="rounded-full absolute -top-8 left-36 sm:top-5 sm:left-5"
         />
-        <div className="h-full flex justify-between items-center">
-          <div>
-            <h2 className="text-6xl mb-8 font-bold">Bem Vindo!</h2>
+        <div className="h-full flex flex-col sm:flex-row justify-between items-center">
+          <div className="text-center mb-5">
+            <h2 className="text-4xl sm:text-6xl mb-8 font-bold">Bem Vindo!</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
           </div>
           <form className="flex flex-col bg-white p-8 rounded-3xl gap-5 shadow-md">
