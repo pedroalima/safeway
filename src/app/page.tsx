@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="min-w-full h-screen flex justify-center items-center">
-      <div className="-z-10 fixed w-full h-full">
+      <div className="hidden sm:block -z-10 fixed w-full h-full">
         <Image 
           src="/bg-1.jpg"
           layout="fill"
@@ -11,8 +11,16 @@ export default function Home() {
           alt="Background image"
         />
       </div>
+      <div className="sm:hidden -z-10 fixed w-full h-full">
+        <Image 
+          src="/bg-2.jpg"
+          layout="fill"
+          objectFit="cover"
+          alt="Background image"
+        />
+      </div>
 
-      <section className="backdrop-blur-sm bg-white/30 w-11/12 sm:w-8/12 h-auto sm:h-96 rounded-3xl py-12 px-5 sm:p-8">
+      <section className="backdrop-blur-sm bg-white/30 w-11/12 sm:w-8/12 h-auto sm:h-96 rounded-3xl py-8 px-5 sm:p-8">
         <Image 
           src="/logo.png"
           width="60"
