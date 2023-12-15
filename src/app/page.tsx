@@ -26,7 +26,7 @@ export default function Home() {
           width="60"
           height="20"
           alt="Logo"
-          className="rounded-full absolute -top-8 left-36 sm:top-5 sm:left-5"
+          className="rounded-full absolute -top-8 left-1/2 -translate-x-1/2 sm:-translate-x-0 sm:top-5 sm:left-5"
         />
         <div className="h-full flex flex-col sm:flex-row justify-between items-center">
           <div className="text-center mb-5">
