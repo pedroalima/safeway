@@ -1,6 +1,14 @@
+"use client"
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const navigate = useRouter()
+
+  const handleLogin = () => {
+    navigate.push("/dashboard");
+  }
+
   return (
     <main className="min-w-full h-screen flex justify-center items-center">
       <div className="hidden sm:block -z-0 fixed w-full h-full">
@@ -33,7 +41,7 @@ export default function Home() {
             <h2 className="text-4xl sm:text-6xl mb-8 font-bold">Bem Vindo!</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
           </div>
-          <form className="flex flex-col bg-white p-8 rounded-3xl gap-5 shadow-md">
+          <form onSubmit={handleLogin} className="flex flex-col bg-white p-8 rounded-3xl gap-5 shadow-md">
             <h2 className="text-2xl text-center font-semibold">Login</h2>
             <div className="flex flex-col gap-1">
               <label htmlFor="user-name">Usuário</label>
