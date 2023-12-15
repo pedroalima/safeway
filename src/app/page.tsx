@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="min-w-full h-screen flex justify-center items-center">
-      <div className="hidden sm:block -z-10 fixed w-full h-full">
+      <div className="hidden sm:block -z-0 fixed w-full h-full">
         <Image 
           src="/bg-1.jpg"
           layout="fill"
