@@ -3,10 +3,10 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const navigate = useRouter()
+  const router = useRouter();
 
   const handleLogin = () => {
-    navigate.push("/dashboard");
+    router.push("/dashboard", { scroll: false});
   }
 
   return (
@@ -39,7 +39,7 @@ export default function Home() {
             <h2 className="text-4xl sm:text-6xl mb-8 font-bold">Bem Vindo!</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
           </div>
-          <form onSubmit={handleLogin} className="flex flex-col bg-white p-8 rounded-3xl gap-5 shadow-md">
+          <form className="flex flex-col bg-white p-8 rounded-3xl gap-5 shadow-md">
             <h2 className="text-2xl text-center font-semibold">Login</h2>
             <div className="flex flex-col gap-1">
               <label htmlFor="user-name">Usuário</label>
@@ -53,7 +53,7 @@ export default function Home() {
               <input type="checkbox" name="connected" id="connected" />
               <label htmlFor="connected" className="text-xs">Manter conectado</label>
             </div>
-            <input className="bg-slate-800 text-slate-100 rounded-full p-2" type="submit" value="Entrar" />
+            <input onClick={handleLogin} className="bg-slate-700 hover:bg-slate-800 text-slate-100 rounded-full p-2" type="button" value="Entrar" />
           </form>
         </div>
       </section>
