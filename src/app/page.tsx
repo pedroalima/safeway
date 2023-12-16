@@ -15,7 +15,6 @@ export default function Home() {
         <Image 
           src="/bg-1.jpg"
           layout="fill"
-          objectFit="cover"
           alt="Background image"
         />
       </div>
@@ -23,7 +22,6 @@ export default function Home() {
         <Image 
           src="/bg-2.jpg"
           layout="fill"
-          objectFit="cover"
           alt="Background image"
         />
       </div>
