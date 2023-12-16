@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -7,7 +7,7 @@ export default function Home() {
 
   const handleLogin = () => {
     router.push("/dashboard", { scroll: false});
-  }
+  };
 
   return (
     <main className="min-w-full h-screen flex justify-center items-center">
@@ -58,5 +58,5 @@ export default function Home() {
         </div>
       </section>
     </main>
-  )
+  );
 }
