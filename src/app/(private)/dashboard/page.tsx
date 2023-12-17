@@ -39,7 +39,7 @@ export default function Dashboard() {
           </div>
           <div className="px-3 flex flex-col gap-2">
             {navLinks.map((link, i) => (
-              <Link href={`/${link}`} key={i} className="text-gray-400 hover:text-slate-950 hover:font-bold">{link}</Link>
+              <Link href={`/`} key={i} className="text-gray-400 hover:text-slate-950 hover:font-bold">{link}</Link>
             ))}
           </div>
           <div className="mt-auto flex justify-start items-center gap-3">
@@ -56,10 +56,13 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="bg-white col-start-3 col-end-9 row-start-1 row-end-2 rounded-2xl p-6">
-          <h1>Dashboard 2</h1>
+        <div className="bg-white col-start-3 col-end-9 row-start-1 row-end-2 rounded-2xl p-6 flex justify-around items-center">
+          <span>icon</span>
+          <span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
+          <button className="bg-slate-700 hover:bg-slate-800 text-white rounded-md px-4 py-1">Assinar</button>
         </div>
         <div className="bg-white col-start-3 col-end-6 row-start-2 row-end-7 rounded-2xl p-6">
+          
           <h1>Dashboard 3</h1>
         </div>
         <div className="bg-white col-start-6 col-end-9 row-start-2 row-end-5 rounded-2xl p-6">

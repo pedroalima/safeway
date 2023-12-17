@@ -35,7 +35,7 @@ export default function Home() {
           className="rounded-full absolute -top-8 left-1/2 -translate-x-1/2 sm:-translate-x-0 sm:top-5 sm:left-5"
         />
         <div className="h-full flex flex-col sm:flex-row justify-between items-center">
-          <div className="text-center mb-5">
+          <div className="text-center sm:text-start mb-5">
             <h2 className="text-4xl sm:text-6xl mb-8 font-bold">Bem Vindo!</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
           </div>
