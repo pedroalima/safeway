@@ -15,7 +15,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-w-full h-screen flex justify-center items-center">
+    <div className="min-w-full h-screen flex justify-center items-center">
       <div className="sm:hidden -z-0 fixed w-full h-full">
         <Image 
           src="/bg-2.jpg"
@@ -67,6 +67,6 @@ export default function Home() {
           </form>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

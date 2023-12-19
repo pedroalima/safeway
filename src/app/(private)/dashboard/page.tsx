@@ -3,14 +3,40 @@ import Image from "next/image";
 import Link from "next/link";
 import cookie from "js-cookie";
 import { useRouter } from "next/navigation";
+import { WiStars } from "react-icons/wi";
+import { MdOutlineSpaceDashboard, MdHomeWork, MdAnalytics, MdBorderColor, MdBugReport, MdAssignmentInd  } from "react-icons/md";
 
 const navLinks = [
-  "Home",
-  "Dashboard",
-  "Projects",
-  "Tasks",
-  "Reporting",
-  "Users"
+  {
+    title: "Home",
+    slug: "/",
+    icon: <MdHomeWork />
+  },
+  {
+    title: "Dashboard",
+    slug: "/dashboard",
+    icon: <MdOutlineSpaceDashboard />
+  },
+  {
+    title: "Projects",
+    slug: "/",
+    icon: <MdAnalytics  />
+  },
+  {
+    title: "Tasks",
+    slug: "/",
+    icon: <MdBorderColor  />
+  },
+  {
+    title: "Reporting",
+    slug: "/",
+    icon: <MdBugReport   />
+  },
+  {
+    title: "Users",
+    slug: "/",
+    icon: <MdAssignmentInd  />
+  }
 ];
 
 export default function Dashboard() {
@@ -49,7 +75,7 @@ export default function Dashboard() {
           </div>
           <div className="px-3 flex flex-col gap-2">
             {navLinks.map((link, i) => (
-              <Link href="/" key={i} className="text-gray-400 hover:text-slate-950 hover:font-bold">{link}</Link>
+              <Link href={`${link.slug}`} key={i} className="text-gray-400 hover:text-slate-950 hover:font-bold flex items-center gap-2">{link.icon} {link.title}</Link>
             ))}
           </div>
           <div className="mt-auto flex justify-start items-center gap-3">
@@ -72,15 +98,15 @@ export default function Dashboard() {
         </div>
 
         <div className="bg-white col-start-3 col-end-9 row-start-1 row-end-2 rounded-2xl p-6 flex justify-around items-center">
-          <Image 
-            src="/icon-budgeting.svg" 
-            width="20" 
-            height="20" 
-            alt="Icon" 
-          />
-          <span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
+          <div className="flex items-center gap-5">
+            <div className="border rounded-md">
+              <WiStars size="2rem" />
+            </div>
+            <span><strong>Lorem ipsum dolor sit amet</strong> consectetur adipisicing elit</span>
+          </div>
           <button className="bg-slate-700 hover:bg-slate-800 text-white rounded-md px-4 py-1">Assinar</button>
         </div>
+
         <div className="bg-white col-start-3 col-end-6 row-start-2 row-end-7 rounded-2xl p-6">
           
           <h1>Dashboard 3</h1>
