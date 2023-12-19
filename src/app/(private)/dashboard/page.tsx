@@ -4,14 +4,11 @@ import Link from "next/link";
 import cookie from "js-cookie";
 import { useRouter } from "next/navigation";
 import { WiStars } from "react-icons/wi";
-import { MdOutlineSpaceDashboard, MdHomeWork, MdAnalytics, MdBorderColor, MdBugReport, MdAssignmentInd  } from "react-icons/md";
+import { MdOutlineSpaceDashboard, MdAnalytics, MdBorderColor, MdBugReport, MdAssignmentInd, MdCheckCircleOutline  } from "react-icons/md";
+import { Disclosure, RadioGroup } from "@headlessui/react";
+import { useState } from "react";
 
 const navLinks = [
-  {
-    title: "Home",
-    slug: "/",
-    icon: <MdHomeWork />
-  },
   {
     title: "Dashboard",
     slug: "/dashboard",
@@ -19,28 +16,64 @@ const navLinks = [
   },
   {
     title: "Projects",
-    slug: "/",
+    slug: "#",
     icon: <MdAnalytics  />
   },
   {
     title: "Tasks",
-    slug: "/",
+    slug: "#",
     icon: <MdBorderColor  />
   },
   {
     title: "Reporting",
-    slug: "/",
+    slug: "#",
     icon: <MdBugReport   />
   },
   {
     title: "Users",
-    slug: "/",
+    slug: "#",
     icon: <MdAssignmentInd  />
   }
 ];
 
+const disclosureItens = [
+  {
+    title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus corrupti maiores ipsa ex facilis, sint culpa non nihil."
+  },
+  {
+    title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus corrupti maiores ipsa ex facilis, sint culpa non nihil."
+  },
+  {
+    title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus corrupti maiores ipsa ex facilis, sint culpa non nihil."
+  },
+];
+
+const cardItens = [
+  {
+    title: "Lorem, ipsum dolor",
+    description: "Lorem ipsum, dolor sit amet consectetur..."
+  },
+  {
+    title: "Lorem, ipsum dolor",
+    description: "Lorem ipsum, dolor sit amet consectetur..."
+  },
+];
+
+const plans = [
+  {
+    name: "Grátis",
+  },
+  {
+    name: "Profissional",
+  },
+];
+
 export default function Dashboard() {
   const router = useRouter();
+  const [selected, setSelected] = useState(plans[0]);
 
   const handleLogout = () => {
     cookie.remove("auth_user");
@@ -59,6 +92,7 @@ export default function Dashboard() {
       </div>
 
       <div className="px-20 py-14 h-full grid grid-cols-8 grid-rows-6 gap-6">
+        {/* Dashboard 1 */}
         <div className="bg-white col-start-1 col-end-3 row-start-1 row-end-7 rounded-2xl p-6 flex flex-col gap-8">
           <div className="flex justify-start items-center gap-4">
             <Image 
@@ -96,8 +130,8 @@ export default function Dashboard() {
             className="bg-red-700 hover:bg-red-800 text-slate-100 rounded-full p-2 cursor-pointer"
           >Sair</button>
         </div>
-
         <div className="bg-white col-start-3 col-end-9 row-start-1 row-end-2 rounded-2xl p-6 flex justify-around items-center">
+          {/* Dashboard 2 */}
           <div className="flex items-center gap-5">
             <div className="border rounded-md">
               <WiStars size="2rem" />
@@ -106,16 +140,78 @@ export default function Dashboard() {
           </div>
           <button className="bg-slate-700 hover:bg-slate-800 text-white rounded-md px-4 py-1">Assinar</button>
         </div>
-
-        <div className="bg-white col-start-3 col-end-6 row-start-2 row-end-7 rounded-2xl p-6">
-          
-          <h1>Dashboard 3</h1>
+        <div className="bg-white col-start-3 col-end-6 row-start-2 row-end-7 rounded-2xl p-6 flex flex-col justify-around">
+          {/* Dashboard 3 */}
+          {disclosureItens.map((item, i) => (
+            <div key={i} className="border-b">
+              <Disclosure>
+                <Disclosure.Button className="py-2 text-left font-bold">
+                  {item.title}
+                </Disclosure.Button>
+                <Disclosure.Panel className="text-gray-500">
+                  {item.description}
+                </Disclosure.Panel>
+              </Disclosure>
+            </div>
+          ))}
         </div>
-        <div className="bg-white col-start-6 col-end-9 row-start-2 row-end-5 rounded-2xl p-6">
-          <h1>Dashboard 4</h1>
+        <div className="bg-white col-start-6 col-end-9 row-start-2 row-end-5 rounded-2xl p-6 flex flex-col justify-around">
+          {/* Dashboard 4 */}
+          {cardItens.map((item, i) => (
+            <div key={i} className="bg-gray-100 p-4 rounded-md">
+              <a
+                href="##"
+                className="flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-orange-500/50"
+              >
+                <span className="flex items-center">
+                  <span className="text-sm font-medium text-gray-900">
+                    {item.title}
+                  </span>
+                </span>
+                <span className="block text-sm text-gray-500">
+                  {item.description}
+                </span>
+              </a>
+            </div>
+          ))}
         </div>
         <div className="bg-white col-start-6 col-end-9 row-start-5 row-end-7 rounded-2xl p-6">
-          <h1>Dashboard 5</h1>
+          {/* Dashboard 5 */}
+          <div className="w-full px-4 py-1">
+            <div className="mx-auto w-full max-w-md">
+              <RadioGroup value={selected} onChange={setSelected}>
+                <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
+                <div className="space-y-2">
+                  {plans.map((plan) => (
+                    <RadioGroup.Option key={plan.name} value={plan}  className={ ({ active, checked }) => 
+                      `${active ? "ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300" : ""}
+                      ${checked ? "bg-sky-900/75 text-white" : "bg-white"}
+                      relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
+                    }>
+                      {({ checked }) => (
+                        <>
+                          <div className="flex w-full items-center justify-between">
+                            <div className="flex items-center">
+                              <div className="text-sm">
+                                <RadioGroup.Label as="p" className={`font-medium  ${ checked ? "text-white" : "text-gray-900" }`}>
+                                  {plan.name}
+                                </RadioGroup.Label>
+                              </div>
+                            </div>
+                            {checked && (
+                              <div className="shrink-0 text-white">
+                                <MdCheckCircleOutline className="h-6 w-6" />
+                              </div>
+                            )}
+                          </div>
+                        </>
+                      )}
+                    </RadioGroup.Option>
+                  ))}
+                </div>
+              </RadioGroup>
+            </div>
+          </div>
         </div>
       </div>
         
