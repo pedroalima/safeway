@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { WiStars } from "react-icons/wi";
 import { MdOutlineSpaceDashboard, MdAnalytics, MdBorderColor, MdBugReport, MdAssignmentInd, MdCheckCircleOutline  } from "react-icons/md";
 import { Disclosure, RadioGroup } from "@headlessui/react";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 const navLinks = [
   {
@@ -75,7 +75,9 @@ export default function Dashboard() {
   const router = useRouter();
   const [selected, setSelected] = useState(plans[0]);
 
-  const handleLogout = () => {
+  const handleLogout = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     cookie.remove("auth_user");
     router.push("/");
   };
@@ -107,7 +109,7 @@ export default function Dashboard() {
           <div>
             <input type="search" name="search" id="search" placeholder="Search" className="bg-gray-100 rounded-lg w-full py-2 px-3" />
           </div>
-          <div className="px-3 flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             {navLinks.map((link, i) => (
               <Link href={`${link.slug}`} key={i} className="text-gray-400 hover:text-slate-950 hover:font-bold flex items-center gap-2">{link.icon} {link.title}</Link>
             ))}
@@ -124,11 +126,13 @@ export default function Dashboard() {
               <span className="text-xs text-gray-300">tsc.pedrolima@gmail.com</span>
             </div>
           </div>
-          <button 
-            onClick={handleLogout} 
-            type="button"
-            className="bg-red-700 hover:bg-red-800 text-slate-100 rounded-full p-2 cursor-pointer"
-          >Sair</button>
+          <form onSubmit={handleLogout}>
+            <button 
+              type="submit"
+              className="bg-red-700 hover:bg-red-800 text-slate-100 rounded-full p-2 cursor-pointer w-full"
+            >Sair</button>
+          </form>
+          
         </div>
         <div className="bg-white col-start-3 col-end-9 row-start-1 row-end-2 rounded-2xl p-6 flex justify-around items-center">
           {/* Dashboard 2 */}
@@ -177,16 +181,17 @@ export default function Dashboard() {
         </div>
         <div className="bg-white col-start-6 col-end-9 row-start-5 row-end-7 rounded-2xl p-6">
           {/* Dashboard 5 */}
-          <div className="w-full px-4 py-1">
+          <h3 className="font-bold mb-1">Planos</h3>
+          <div className="w-full px-4">
             <div className="mx-auto w-full max-w-md">
               <RadioGroup value={selected} onChange={setSelected}>
                 <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
                 <div className="space-y-2">
                   {plans.map((plan) => (
                     <RadioGroup.Option key={plan.name} value={plan}  className={ ({ active, checked }) => 
-                      `${active ? "ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300" : ""}
-                      ${checked ? "bg-sky-900/75 text-white" : "bg-white"}
-                      relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
+                      `${active ? "ring-2 ring-white/60 ring-offset-2 ring-offset-slate-900" : ""}
+                      ${checked ? "bg-slate-800 text-white" : "bg-white"}
+                      relative flex cursor-pointer rounded-lg px-5 py-2 shadow-md focus:outline-none`
                     }>
                       {({ checked }) => (
                         <>

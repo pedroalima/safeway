@@ -9,12 +9,12 @@
 }
 
 body {
-  background-image: url("../../public/bg-2.jpg");
+  background-image: url("../../public/bg-mobile.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 
   @media screen and (min-width: 630px) {
-    background-image: url("../../public/bg-1.jpg");
+    background-image: url("../../public/bg-desktop.jpg");
     background-repeat: no-repeat;
     background-size: cover;
   }

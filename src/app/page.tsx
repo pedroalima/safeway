@@ -16,22 +16,6 @@ export default function Home() {
 
   return (
     <div className="min-w-full h-screen flex justify-center items-center">
-      {/* <div className="sm:hidden -z-0 fixed w-full h-full">
-        <Image 
-          src="/bg-2.jpg"
-          fill
-          alt="Background image"
-        />
-      </div>
-      <div className="hidden sm:block -z-0 fixed w-full h-full">
-        <Image 
-          src="/bg-1.jpg"
-          fill
-          alt="Background image"
-          priority
-        />
-      </div> */}
-
       <section className="backdrop-blur-sm bg-white/30 w-11/12 sm:w-8/12 h-auto sm:h-96 rounded-3xl py-8 px-5 sm:p-8">
         <Image 
           src="/logo.png"
