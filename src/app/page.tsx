@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div className="min-w-full h-screen flex justify-center items-center">
-      <div className="sm:hidden -z-0 fixed w-full h-full">
+      {/* <div className="sm:hidden -z-0 fixed w-full h-full">
         <Image 
           src="/bg-2.jpg"
           fill
@@ -30,7 +30,7 @@ export default function Home() {
           alt="Background image"
           priority
         />
-      </div>
+      </div> */}
 
       <section className="backdrop-blur-sm bg-white/30 w-11/12 sm:w-8/12 h-auto sm:h-96 rounded-3xl py-8 px-5 sm:p-8">
         <Image 
