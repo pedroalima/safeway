@@ -4,9 +4,17 @@ import Link from "next/link";
 import cookie from "js-cookie";
 import { useRouter } from "next/navigation";
 import { WiStars } from "react-icons/wi";
-import { MdOutlineSpaceDashboard, MdAnalytics, MdBorderColor, MdBugReport, MdAssignmentInd, MdCheckCircleOutline  } from "react-icons/md";
-import { Disclosure, RadioGroup } from "@headlessui/react";
-import { FormEvent, useState } from "react";
+import { 
+  MdOutlineSpaceDashboard, 
+  MdAnalytics, 
+  MdBorderColor, 
+  MdBugReport, 
+  MdAssignmentInd, 
+  MdCheckCircleOutline,
+  MdOutlineMenu  
+} from "react-icons/md";
+import { Disclosure, Menu, RadioGroup, Transition } from "@headlessui/react";
+import { FormEvent, Fragment, useState } from "react";
 
 const navLinks = [
   {
@@ -84,9 +92,63 @@ export default function Dashboard() {
 
   return (
     <section className="h-screen">
-      <div className="px-20 py-14 h-full grid grid-cols-8 grid-rows-6 gap-6">
+      <div className="p-5 sm:px-20 sm:py-14 h-auto sm:h-full flex flex-col gap-1 sm:grid sm:grid-cols-8 sm:grid-rows-6 sm:gap-6">
+        {/* Mobile */}
+        <div className="sm:hidden flex justify-between items-center">
+          <div className="flex justify-start items-center gap-4">
+            <Image 
+              src="/logo.png" 
+              width="45" 
+              height="45" 
+              alt="Logo" 
+              className="rounded-full"
+            />
+            <span className="font-bold">SafeWay</span>
+          </div>
+          <Menu as="div" className="relative inline-block text-left">
+            <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"> 
+              <MdOutlineMenu size="2rem" /> 
+            </Menu.Button>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items className="absolute p-3 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+                {navLinks.map((link, i) => (
+                  <Menu.Item key={i}>
+                    <Link 
+                      href={`${link.slug}`}
+                      className="p-2 text-gray-400 hover:text-slate-950 hover:font-bold flex items-center gap-2"
+                    >{link.icon} {link.title}
+                    </Link>
+                  </Menu.Item>
+                ))}
+                <Menu.Item>
+                  <div className="flex flex-col">
+                    <span className="text-xs text-slate-950">Pedro Lima</span>
+                    <span className="text-xs text-gray-300">tsc.pedrolima@gmail.com</span>
+                  </div>
+                </Menu.Item>
+                <Menu.Item>
+                  <form onSubmit={handleLogout}>
+                    <button 
+                      type="submit"
+                      className="bg-red-700 hover:bg-red-800 text-slate-100 rounded-full p-2 cursor-pointer w-full"
+                    >Sair</button>
+                  </form>
+                </Menu.Item>
+              </Menu.Items>
+            </Transition>
+          </Menu>
+        </div>
+        
         {/* Dashboard 1 */}
-        <div className="bg-white col-start-1 col-end-3 row-start-1 row-end-7 rounded-2xl p-6 flex flex-col gap-8">
+        <div className="hidden bg-white col-start-1 col-end-3 row-start-1 row-end-7 rounded-2xl p-6 sm:flex flex-col gap-8">
           <div className="flex justify-start items-center gap-4">
             <Image 
               src="/logo.png" 
@@ -123,7 +185,6 @@ export default function Dashboard() {
               className="bg-red-700 hover:bg-red-800 text-slate-100 rounded-full p-2 cursor-pointer w-full"
             >Sair</button>
           </form>
-          
         </div>
         <div className="bg-white col-start-3 col-end-9 row-start-1 row-end-2 rounded-2xl p-6 flex justify-around items-center">
           {/* Dashboard 2 */}
