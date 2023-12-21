@@ -84,15 +84,6 @@ export default function Dashboard() {
 
   return (
     <section className="h-screen">
-      <div className="-z-10 fixed w-full h-full blur-md">
-        <Image
-          src="/bg-1.jpg"
-          fill
-          alt="Background image"
-          priority
-        />
-      </div>
-
       <div className="px-20 py-14 h-full grid grid-cols-8 grid-rows-6 gap-6">
         {/* Dashboard 1 */}
         <div className="bg-white col-start-1 col-end-3 row-start-1 row-end-7 rounded-2xl p-6 flex flex-col gap-8">
