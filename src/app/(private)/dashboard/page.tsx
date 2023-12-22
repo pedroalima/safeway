@@ -118,7 +118,7 @@ export default function Dashboard() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute p-3 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+              <Menu.Items className="absolute py-4 px-4 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
                 {navLinks.map((link, i) => (
                   <Menu.Item key={i}>
                     <Link 
@@ -129,7 +129,7 @@ export default function Dashboard() {
                   </Menu.Item>
                 ))}
                 <Menu.Item>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col p-5">
                     <span className="text-xs text-slate-950">Pedro Lima</span>
                     <span className="text-xs text-gray-300">tsc.pedrolima@gmail.com</span>
                   </div>
@@ -138,13 +138,16 @@ export default function Dashboard() {
                   <form onSubmit={handleLogout}>
                     <button 
                       type="submit"
-                      className="bg-red-700 hover:bg-red-800 text-slate-100 rounded-full p-2 cursor-pointer w-full"
+                      className="bg-red-700 hover:bg-red-800 text-slate-100 rounded-full p-2 my-4 cursor-pointer w-full"
                     >Sair</button>
                   </form>
                 </Menu.Item>
               </Menu.Items>
             </Transition>
           </Menu>
+        </div>
+        <div className="my-5">
+          <input type="search" name="search" id="search" placeholder="Search" className="bg-gray-100 rounded-lg w-full py-2 px-3" />
         </div>
         
         {/* Dashboard 1 */}
@@ -186,7 +189,7 @@ export default function Dashboard() {
             >Sair</button>
           </form>
         </div>
-        <div className="bg-white col-start-3 col-end-9 row-start-1 row-end-2 rounded-2xl p-6 flex justify-around items-center">
+        <div className="bg-white col-start-3 col-end-9 row-start-1 row-end-2 rounded-2xl p-6 flex flex-col sm:flex-row justify-around items-center">
           {/* Dashboard 2 */}
           <div className="flex items-center gap-5">
             <div className="border rounded-md">
@@ -194,7 +197,7 @@ export default function Dashboard() {
             </div>
             <span><strong>Lorem ipsum dolor sit amet</strong> consectetur adipisicing elit</span>
           </div>
-          <button className="bg-slate-700 hover:bg-slate-800 text-white rounded-md px-4 py-1">Assinar</button>
+          <button className="bg-slate-700 hover:bg-slate-800 text-white rounded-md px-4 py-1 mt-3 sm:m-0">Assinar</button>
         </div>
         <div className="bg-white col-start-3 col-end-6 row-start-2 row-end-7 rounded-2xl p-6 flex flex-col justify-around">
           {/* Dashboard 3 */}

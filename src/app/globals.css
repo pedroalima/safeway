@@ -10,8 +10,9 @@
 
 body {
   background-image: url("../../public/bg-mobile.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
 
   @media screen and (min-width: 630px) {
     background-image: url("../../public/bg-desktop.jpg");
