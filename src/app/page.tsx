@@ -30,7 +30,7 @@ export default function Home() {
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
           </div>
 
-          <form onSubmit={onSubmit} className="flex flex-col bg-white p-8 rounded-3xl gap-5 shadow-md">
+          <form onSubmit={onSubmit} className="flex flex-col bg-white p-8 rounded-3xl gap-5 shadow-xl">
             <h2 className="text-2xl text-center font-semibold">Login</h2>
             <div className="flex flex-col gap-1">
               <label htmlFor="user-name">Usuário</label>

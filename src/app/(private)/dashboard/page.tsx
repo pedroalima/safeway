@@ -91,65 +91,64 @@ export default function Dashboard() {
   };
 
   return (
-    <section className="h-screen">
-      <div className="p-5 sm:px-20 sm:py-14 h-auto sm:h-full flex flex-col gap-1 sm:grid sm:grid-cols-8 sm:grid-rows-6 sm:gap-6">
-        {/* Mobile */}
-        <div className="sm:hidden flex justify-between items-center">
-          <div className="flex justify-start items-center gap-4">
-            <Image 
-              src="/logo.png" 
-              width="45" 
-              height="45" 
-              alt="Logo" 
-              className="rounded-full"
-            />
-            <span className="font-bold">SafeWay</span>
-          </div>
-          <Menu as="div" className="relative inline-block text-left">
-            <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"> 
-              <MdOutlineMenu size="2rem" /> 
-            </Menu.Button>
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute py-4 px-4 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
-                {navLinks.map((link, i) => (
-                  <Menu.Item key={i}>
-                    <Link 
-                      href={`${link.slug}`}
-                      className="p-2 text-gray-400 hover:text-slate-950 hover:font-bold flex items-center gap-2"
-                    >{link.icon} {link.title}
-                    </Link>
-                  </Menu.Item>
-                ))}
-                <Menu.Item>
-                  <div className="flex flex-col p-5">
-                    <span className="text-xs text-slate-950">Pedro Lima</span>
-                    <span className="text-xs text-gray-300">tsc.pedrolima@gmail.com</span>
-                  </div>
-                </Menu.Item>
-                <Menu.Item>
-                  <form onSubmit={handleLogout}>
-                    <button 
-                      type="submit"
-                      className="bg-red-700 hover:bg-red-800 text-slate-100 rounded-full p-2 my-4 cursor-pointer w-full"
-                    >Sair</button>
-                  </form>
-                </Menu.Item>
-              </Menu.Items>
-            </Transition>
-          </Menu>
+    <section className="sm:h-screen">
+      {/* Mobile */}
+      <div className="sm:hidden bg-slate-100 shadow-2xl py-3 px-5 flex justify-between items-center">
+        <div className="flex justify-start items-center gap-4">
+          <Image 
+            src="/logo.png" 
+            width="45" 
+            height="45" 
+            alt="Logo" 
+            className="rounded-full"
+          />
+          <span className="font-bold text-xl">SafeWay</span>
         </div>
-        <div className="my-5">
+        <Menu as="div" className="relative inline-block text-left">
+          <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"> 
+            <MdOutlineMenu size="2rem" /> 
+          </Menu.Button>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items className="absolute py-4 px-4 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+              {navLinks.map((link, i) => (
+                <Menu.Item key={i}>
+                  <Link 
+                    href={`${link.slug}`}
+                    className="p-2 text-gray-400 hover:text-slate-950 hover:font-bold flex items-center gap-2"
+                  >{link.icon} {link.title}
+                  </Link>
+                </Menu.Item>
+              ))}
+              <Menu.Item>
+                <div className="flex flex-col p-5">
+                  <span className="text-xs text-slate-950">Pedro Lima</span>
+                  <span className="text-xs text-gray-300">tsc.pedrolima@gmail.com</span>
+                </div>
+              </Menu.Item>
+              <Menu.Item>
+                <form onSubmit={handleLogout}>
+                  <button 
+                    type="submit"
+                    className="bg-red-700 hover:bg-red-800 text-slate-100 rounded-full p-2 my-4 cursor-pointer w-full"
+                  >Sair</button>
+                </form>
+              </Menu.Item>
+            </Menu.Items>
+          </Transition>
+        </Menu>
+      </div>
+      <div className="p-5 sm:px-20 sm:py-14 h-auto sm:h-full flex flex-col gap-3 sm:grid sm:grid-cols-8 sm:grid-rows-6 sm:gap-6">
+        <div className="my-5 sm:hidden shadow-xl">
           <input type="search" name="search" id="search" placeholder="Search" className="bg-gray-100 rounded-lg w-full py-2 px-3" />
         </div>
-        
         {/* Dashboard 1 */}
         <div className="hidden bg-white col-start-1 col-end-3 row-start-1 row-end-7 rounded-2xl p-6 sm:flex flex-col gap-8">
           <div className="flex justify-start items-center gap-4">
@@ -189,7 +188,7 @@ export default function Dashboard() {
             >Sair</button>
           </form>
         </div>
-        <div className="bg-white col-start-3 col-end-9 row-start-1 row-end-2 rounded-2xl p-6 flex flex-col sm:flex-row justify-around items-center">
+        <div className="bg-white col-start-3 col-end-9 row-start-1 row-end-2 rounded-2xl p-6 flex flex-col sm:flex-row justify-around items-center shadow-xl">
           {/* Dashboard 2 */}
           <div className="flex items-center gap-5">
             <div className="border rounded-md">
@@ -199,7 +198,7 @@ export default function Dashboard() {
           </div>
           <button className="bg-slate-700 hover:bg-slate-800 text-white rounded-md px-4 py-1 mt-3 sm:m-0">Assinar</button>
         </div>
-        <div className="bg-white col-start-3 col-end-6 row-start-2 row-end-7 rounded-2xl p-6 flex flex-col justify-around">
+        <div className="bg-white col-start-3 col-end-6 row-start-2 row-end-7 rounded-2xl p-6 flex flex-col justify-around shadow-xl">
           {/* Dashboard 3 */}
           {disclosureItens.map((item, i) => (
             <div key={i} className="border-b">
@@ -214,7 +213,7 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
-        <div className="bg-white col-start-6 col-end-9 row-start-2 row-end-5 rounded-2xl p-6 flex flex-col justify-around">
+        <div className="bg-white col-start-6 col-end-9 row-start-2 row-end-5 rounded-2xl p-6 flex flex-col justify-around shadow-xl">
           {/* Dashboard 4 */}
           {cardItens.map((item, i) => (
             <div key={i} className="bg-gray-100 p-4 rounded-md">
@@ -234,7 +233,7 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
-        <div className="bg-white col-start-6 col-end-9 row-start-5 row-end-7 rounded-2xl p-6">
+        <div className="bg-white col-start-6 col-end-9 row-start-5 row-end-7 rounded-2xl p-6 shadow-xl">
           {/* Dashboard 5 */}
           <h3 className="font-bold mb-1">Planos</h3>
           <div className="w-full px-4">
