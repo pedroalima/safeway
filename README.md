@@ -1,22 +1,24 @@
 # SafeWay
 
-Um protótipo inicial de uma plataforma SaaS que dispõe de um sistema de controle de rotas públicas e privadas, com versões otimizadas para mobile e desktop.
+Um protótipo inicial de uma plataforma SaaS que dispõe de um sistema de rotas privadas, com versões otimizadas para mobile e desktop.
 
 O projeto é de minha autoria e foi inspirado em outras aplicações já existentes, adaptando seus designs e recursos. A aplicação foi desenvolvida utilizando tecnologias como TypeScript, Next, TailwindCSS e CSS.
 
 ## Screenshots
 
-![#](./public/1.png)
+![#](./public/section-desktop.png)
 
 </br>
 
 ## 🎯 Objetivos
 
-O principal objetivo deste projeto foi elaborar um sistema de rotas públicas e privadas utilizando o framework Next. Secundariamente, busquei familiarizar-me com o framework de estilos Tailwind CSS.
+O principal objetivo deste projeto foi elaborar um sistema de rotas privadas utilizando o framework Next. Secundariamente, busquei familiarizar-me com o framework de estilos Tailwind CSS.
 
 Os usuários têm a capacidade de:
 > - Visualizar a aplicação de maneira independente, seja em dispositivos mobile ou desktop.
-> - Navegar entre as páginas de login e dashboard. No entanto, a rota privada do dashboard só poderá ser acessada se o usuário possuir o token, o qual é obtido ao clicar no botão 'Entrar' no formulário de login. Da mesma forma, a rota pública raiz, onde se encontra o formulário de login, só poderá ser acessada se o usuário não possuir o token. Para excluir o token, é necessário clicar no botão 'Sair' na barra de navegação do dashboard (na versão mobile, o botão está no menu).
+> - Navegar entre as páginas de login e dashboard, testando o sistema de rotas privadas. 
+
+> OBS - A rota privada do dashboard só poderá ser acessada se o usuário possuir o token, o qual é obtido ao clicar no botão 'Entrar' no formulário de login. Da mesma forma, a rota pública raiz, onde se encontra o formulário de login, só poderá ser acessada se o usuário não possuir o token. Para excluir o token, é necessário clicar no botão 'Sair' na barra de navegação do dashboard (na versão mobile, o botão está no menu).
 
 </br>
 
@@ -30,26 +32,47 @@ Os usuários têm a capacidade de:
 
 </br>
 
-<!-- ## 🧠 Meu aprendizado
+## 🧠 Meu aprendizado
 
-Este projeto proporcionou minha primeira experiência com o framework Next. Sem dúvida, o que mais me chamou a atenção na ferramenta, além de toda facilidade no desenvolvimento, foi a combinação de renderização do lado do servidor (SSR) e renderização do lado do cliente (CSR), que oferecem uma fluidez imensa à aplicação.
+O Next.js, oferece uma poderosa funcionalidade de sistema de rotas privadas através do uso de middlewares. Este recurso permite criar aplicações web seguras e controlar o acesso a determinadas rotas com facilidade. Ao implementar middlewares específicos, é possível adicionar camadas adicionais de autenticação, autorização e lógica personalizada às rotas privadas, garantindo que apenas usuários autorizados tenham acesso a determinados recursos.
 
-<img src="./public/next.avif" width="800">
+Conforme a documentação recomenda, é necessário criar o arquivo middleware.js/ts na raiz do seu projeto.
 
-fonte: [Documentação](https://nextjs.org/docs/app/building-your-application/routing)
-
-Gostaria de destacar a abordagem do framework em relação às rotas, pois tudo é muito intuitivo. A estrutura de pastas é utilizada para definir as rotas, como mostrado na imagem acima, cada pasta representa uma rota.
-
-```ts
-export default function Dashboard() {...
+```tsx
+import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+ 
+export function middleware(request: NextRequest) {
+  // Busca e pega o valor do token
+  const token = request.cookies.get("auth_user")?.value;
+  // Se o token não existir
+  if (!token) {
+    // E se o usuário estiver na rota "/"
+    if (request.nextUrl.pathname == "/") {
+      // Prossiga sem encaminhar
+      return NextResponse.next();
+    }
+    // Encaminha o usuário para a rota "/"
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+  //Se o token existir e o usuário quiser acessar a rota "/"
+  if (request.nextUrl.pathname == "/") {
+    // Encaminhe o usuário para a rota "dashboard"
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
 }
+
+export const config = {
+  // Rotas afetadas
+  matcher: ["/", "/dashboard/:path*"]
+};
 ```
 
-A pasta por si só não concederá acesso à rota; é necessário um arquivo page.jsx/tsx. Dentro desse arquivo, precisamos criar um componente com o nome da rota desejada.
 
-[Saiba Mais!](https://nextjs.org/docs)     
 
-</br> -->
+Consulte a [documentação!](https://nextjs.org/docs/app/building-your-application/routing/middleware)
+
+</br>
 
 ## 💻 Rodando o projeto
 
