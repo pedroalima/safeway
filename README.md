@@ -15,8 +15,8 @@ O projeto é de minha autoria e foi inspirado em outras aplicações já existen
 O principal objetivo deste projeto foi elaborar um sistema de rotas privadas utilizando o framework Next. Secundariamente, busquei familiarizar-me com o framework de estilos Tailwind CSS.
 
 Os usuários têm a capacidade de:
-> - Visualizar a aplicação de maneira independente, seja em dispositivos mobile ou desktop.
-> - Navegar entre as páginas de login e dashboard, testando o sistema de rotas privadas. 
+- Visualizar a aplicação de maneira independente, seja em dispositivos mobile ou desktop.
+- Navegar entre as páginas de login e dashboard, testando o sistema de rotas privadas. 
 
 > OBS - A rota privada do dashboard só poderá ser acessada se o usuário possuir o token, o qual é obtido ao clicar no botão 'Entrar' no formulário de login. Da mesma forma, a rota pública raiz, onde se encontra o formulário de login, só poderá ser acessada se o usuário não possuir o token. Para excluir o token, é necessário clicar no botão 'Sair' na barra de navegação do dashboard (na versão mobile, o botão está no menu).
 
@@ -24,11 +24,11 @@ Os usuários têm a capacidade de:
 
 ## 🔧 Propriedades e Tecnologias
 
-> - TypeScript
-> - Next 
-> - TailwindCSS
-> - CSS
-> - ESLint
+- TypeScript
+- Next 
+- TailwindCSS
+- CSS
+- ESLint
 
 </br>
 
@@ -68,9 +68,13 @@ export const config = {
 };
 ```
 
+O arquivo é composto pela função middleware e um objeto de configuração chamado "matcher".
 
+A função middleware recebe o parâmetro "request", que nos concede acesso aos cookies e componentes da URL da web. Isso nos permite instanciar o token para trabalhar com condições baseadas nele. Outro elemento crucial é o "NextResponse", o qual precisamos importar de "next/server". Ele nos possibilita direcionar as rotas para onde o usuário será encaminhado.
 
-Consulte a [documentação!](https://nextjs.org/docs/app/building-your-application/routing/middleware)
+O objeto "matcher" será responsável por definir quais rotas serão impactadas pela função middleware.
+
+> Para saber mais consulte a [documentação!](https://nextjs.org/docs/app/building-your-application/routing/middleware)
 
 </br>
 
