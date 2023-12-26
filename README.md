@@ -82,9 +82,13 @@ O objeto "matcher" será responsável por definir quais rotas serão impactadas 
 
 ![#](./public/mobile.gif)
 
+### Acesse a aplicação via web [aqui!](https://safeway-two.vercel.app/)
+
+### Ou instale na sua máquina
+
 Para conferir a versão final é só realizar os seguintes passos:
 
-### 1 - Clonando o Projeto:
+#### 1 - Clonando o Projeto:
 Navegue até o diretório onde deseja clonar o projeto.
 
 Abra o terminal com o GitBash.
@@ -96,7 +100,7 @@ git clone URL_DO_REPOSITORIO
 ```
 Substitua URL_DO_REPOSITORIO pela URL do repositório deste projeto.
 
-### 2 - Instalando Dependências:
+#### 2 - Instalando Dependências:
 Navegue até o diretório "safeway".
 
 Execute o comando:
@@ -109,7 +113,7 @@ ou
 yarn install
 ```
 
-### 3 - Executando o Projeto:
+#### 3 - Executando o Projeto:
 Ainda no diretório "safeway".
 
 Execute o comando:

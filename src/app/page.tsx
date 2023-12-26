@@ -11,7 +11,7 @@ export default function Home() {
     event.preventDefault();
     
     router.push("/dashboard");
-    cookie.set("auth_user", "uhaguhsaughsaugh");
+    cookie.set("auth_token", "as32f1sa564fsa897sa51gsa5g4");
   };
 
   return (
