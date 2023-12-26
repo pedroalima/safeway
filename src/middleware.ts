@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
  
 export function middleware(request: NextRequest) {
   // Busca e pega o valor do token
-  const token = request.cookies.get("auth_user")?.value;
+  const token = request.cookies.get("auth_token")?.value;
   // Se o token não existir
   if (!token) {
     // E se o usuário estiver na rota "/"

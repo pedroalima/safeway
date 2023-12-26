@@ -86,7 +86,7 @@ export default function Dashboard() {
   const handleLogout = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    cookie.remove("auth_user");
+    cookie.remove("auth_token");
     router.push("/");
   };
 
