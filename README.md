@@ -82,6 +82,11 @@ O objeto "matcher" será responsável por definir quais rotas serão impactadas 
 
 ![#](./public/mobile.gif)
 
+### Veja uma breve demonstração do sistema de rotas privadas [clicando aqui](https://drive.google.com/file/d/1UXNEAALbqShYOaO_wtxYMYjgMb9aVReU/view?usp=sharing)
+
+<iframe width="420" height="315" src="https://drive.google.com/file/d/1UXNEAALbqShYOaO_wtxYMYjgMb9aVReU/view?usp=sharing">
+</iframe>
+
 ### Acesse a aplicação via web [aqui!](https://safeway-two.vercel.app/)
 
 ### Ou instale na sua máquina
